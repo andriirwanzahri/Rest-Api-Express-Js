@@ -2,6 +2,7 @@
 
 // FILE DUMMY
 const data = {
+    id: '1',
     nama: "andri irwan Zahri",
     email: "andri.zahri@gmail.com",
     address: "lhoksukon"
@@ -23,8 +24,19 @@ const createNewUser = (req, res) => {
     })
 }
 
+// MEMBUAT CONTROLLLER UPDATE DATA
+const updateUSer = (req, res) => {
+    const { id } = req.params;
+    console.log("idUser:",id);
+    res.json({
+        message: "update data success",
+        data: req.body
+    })
+}
+
 // INI DATA CONTROLLERS DI EXPORT TERLEBIH DAHULU
 module.exports = {
     getAllUsers,
-    createNewUser
+    createNewUser,
+    updateUSer
 }
