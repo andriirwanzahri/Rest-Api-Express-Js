@@ -1,7 +1,16 @@
 // MEMBUAT CONTROLLER GET ALL USERS
+
+// FILE DUMMY
+const data = {
+    nama: "andri irwan Zahri",
+    email: "andri.zahri@gmail.com",
+    address: "lhoksukon"
+}
+
 const getAllUsers = (req, res) => {
     res.json({
-        message: 'Get AllUsers Success'
+        message: 'Get AllUsers Success',
+        data: data
     })
 }
 
