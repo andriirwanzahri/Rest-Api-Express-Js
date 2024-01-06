@@ -7,8 +7,10 @@ const getAllUsers = (req, res) => {
 
 // MEMBUAT CONTROLLER POST NEW USER
 const createNewUser = (req, res) => {
+    console.log(req.body);
     res.json({
-        message: 'Create data success'
+        message: 'Create data success',
+        data: req.body
     })
 }
 

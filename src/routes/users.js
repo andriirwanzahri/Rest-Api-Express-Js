@@ -4,8 +4,8 @@ const UserController = require('../controller/usersController');
 const router = express.Router();
 
 // MEMBUAT ROUTER DATA KE CONTROLLERS
-router.get('/', UserController.getAllUsers);
 router.post('/', UserController.createNewUser);
+router.get('/', UserController.getAllUsers);
 
 
 // DI EXPORT DATANYA KE DALAM INDEX.JS

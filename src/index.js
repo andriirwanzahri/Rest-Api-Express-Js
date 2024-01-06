@@ -7,7 +7,8 @@ const middlewareLogRequest = require('./middleware/logs');
 
 // menambahkan middleware pada rest api
 app.use(middlewareLogRequest)
-
+// mengizinkan middleware untuk json
+app.use(express.json());
 // memanggil pengunaan routes
 app.use('/users', usersRoutes);
 
