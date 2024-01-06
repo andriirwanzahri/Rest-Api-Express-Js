@@ -1,18 +1,22 @@
+const UsersModel = require('../models/userModel');
+
+
 // MEMBUAT CONTROLLER GET ALL USERS
 
-// FILE DUMMY
-const data = {
-    id: '1',
-    nama: "andri irwan Zahri",
-    email: "andri.zahri@gmail.com",
-    address: "lhoksukon"
-}
 
-const getAllUsers = (req, res) => {
-    res.json({
-        message: 'Get AllUsers Success',
-        data: data
-    })
+const getAllUsers = async (req, res) => {
+    try {
+        const [data] = await UsersModel.getAllUsers();
+        res.json({
+            message: 'Get AllUsers Success',
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server error',
+            serverMessage: error,
+        })
+    }
 }
 
 // MEMBUAT CONTROLLER POST NEW USER

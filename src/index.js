@@ -1,7 +1,10 @@
 const express = require('express');
 const usersRoutes = require('./routes/users');
 
+
 const app = express();
+
+
 
 const middlewareLogRequest = require('./middleware/logs');
 
@@ -9,6 +12,7 @@ const middlewareLogRequest = require('./middleware/logs');
 app.use(middlewareLogRequest)
 // mengizinkan middleware untuk json
 app.use(express.json());
+
 // memanggil pengunaan routes
 app.use('/users', usersRoutes);
 
@@ -18,6 +22,8 @@ app.get("/", (req, res) => {
         email: "andri.zahri@gmail.com"
     }); 
 })
+
+
 
 app.listen(4000, () => {
     console.log('server Berhasil di buat dengan port 4000');
