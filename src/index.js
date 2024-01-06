@@ -3,10 +3,12 @@ const usersRoutes = require('./routes/users');
 
 const app = express();
 
-// app.use("/user", (req, res) => {
-//     res.send("ini adalah percobaan res api");
-// })
+const middlewareLogRequest = require('./middleware/logs');
 
+// menambahkan middleware pada rest api
+app.use(middlewareLogRequest)
+
+// memanggil pengunaan routes
 app.use('/users', usersRoutes);
 
 app.get("/", (req, res) => {
