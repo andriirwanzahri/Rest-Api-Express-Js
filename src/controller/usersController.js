@@ -34,9 +34,23 @@ const updateUSer = (req, res) => {
     })
 }
 
+const deleteUser = (req, res) => {
+    const { id } = req.params;
+    res.json({
+
+        message: "Delete User Seccess",
+        data: {
+            id: id,
+            nama: "andri irwan zahri",
+            email: "andriirwanzahri@gmail.com"
+        }
+    })
+}
+
 // INI DATA CONTROLLERS DI EXPORT TERLEBIH DAHULU
 module.exports = {
     getAllUsers,
     createNewUser,
-    updateUSer
+    updateUSer,
+    deleteUser
 }

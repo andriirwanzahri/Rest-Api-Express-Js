@@ -14,6 +14,9 @@ router.get('/', UserController.getAllUsers);
 // UPDATE - PATCH
 router.patch('/:id', UserController.updateUSer);
 
+// delete data
+router.delete('/:id', UserController.deleteUser);
+
 
 // DI EXPORT DATANYA KE DALAM INDEX.JS
 module.exports = router;
