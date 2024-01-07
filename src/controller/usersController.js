@@ -19,23 +19,62 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+const getUsers = async (req, res) => {
+    const { id } = req.params;
+    console.log(req.params);
+    try {
+        const [data] = await UsersModel.getUsers(id);
+        res.json({
+            message: 'Get Users id Success',
+            data: data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server error',
+            serverMessage: error,
+        })
+    }
+}
+
 // MEMBUAT CONTROLLER POST NEW USER
-const createNewUser = (req, res) => {
-    console.log(req.body);
-    res.json({
-        message: 'Create data success',
-        data: req.body
+const createNewUser = async (req, res) => {
+    const { body } = req;
+   try {
+       await UsersModel.createNewUser(body);
+       res.json({
+           message: "Create New User Success",
+           data: {body}
+       })
+   } catch (error) {
+       res.status(500).json({
+           message: "Server Create Error",
+           serverMessage: error,
     })
+   }
 }
 
 // MEMBUAT CONTROLLLER UPDATE DATA
-const updateUSer = (req, res) => {
+const updateUSer = async (req, res) => {
     const { id } = req.params;
-    console.log("idUser:",id);
-    res.json({
-        message: "update data success",
-        data: req.body
-    })
+    const { body } = req;
+    // console.log tidak boleh diatas variable
+    console.log("userId:",id);
+    console.log(body);
+    try {
+        await UsersModel.updateUser(body,id);
+        res.json({
+           message: "update data success",
+            data: {
+                id: id,
+                ...body,
+            }
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server error',
+            serverMessage: error,
+        })
+    }
 }
 
 const deleteUser = (req, res) => {
@@ -54,6 +93,7 @@ const deleteUser = (req, res) => {
 // INI DATA CONTROLLERS DI EXPORT TERLEBIH DAHULU
 module.exports = {
     getAllUsers,
+    getUsers,
     createNewUser,
     updateUSer,
     deleteUser

@@ -9,6 +9,8 @@ const app = express();
 const middlewareLogRequest = require('./middleware/logs');
 
 // menambahkan middleware pada rest api
+require('dotenv').config()
+const PORT = process.env.PORT|| 5000;
 app.use(middlewareLogRequest)
 // mengizinkan middleware untuk json
 app.use(express.json());
@@ -25,6 +27,6 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(4000, () => {
-    console.log('server Berhasil di buat dengan port 4000');
+app.listen(PORT, () => {
+    console.log(`server Berhasil di buat dengan port ${PORT}`);
 })
