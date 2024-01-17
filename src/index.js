@@ -7,15 +7,10 @@ const app = express();
 
 
 const middlewareLogRequest = require('./middleware/logs');
+const corsRestApi = require('./middleware/cors');
 
 // Middleware untuk menangani CORS
-app.use((req, res, next) => {
-    //menambahkan * pada header origin untuk memberikan semua akses kedalam rest api
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+app.use(corsRestApi);
 
 // menambahkan middleware pada rest api
 app.use(middlewareLogRequest)
